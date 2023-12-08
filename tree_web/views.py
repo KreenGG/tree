@@ -8,7 +8,7 @@ class CategoryListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["categories"] = Post.tree.order_by("title")
+        context["categories"] = Category.tree.order_by("title")
         return context
 
 
