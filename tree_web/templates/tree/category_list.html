@@ -1,0 +1,22 @@
+{% extends "tree/base.html" %} {% load mptt_tags %} {% block title %}Список
+категорий{% endblock %} {% block content %}
+
+<div class="collapsible-menu">
+	<div class="menu-content">
+		<ul class="simple-tree">
+			{% recursetree categories %}
+			<li>
+				<input type="checkbox" checked="checked" id="{{node.title}}" />
+				<label for="{{node.title}}">{{node.title}}</label>
+				{% if not node.is_leaf_node %}
+				<ul class="children">
+					{{ children }}
+				</ul>
+				{% endif %}
+			</li>
+			{% endrecursetree %}
+		</ul>
+	</div>
+</div>
+
+{% endblock %}
